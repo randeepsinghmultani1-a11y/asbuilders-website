@@ -160,13 +160,14 @@ def build_contact():
 <p><strong>{C['name']}</strong><br>{C['address']}</p>
 <p><a href="tel:{TEL1}">{C['phone1']}</a><br><a href="mailto:{C['email']}">{C['email']}</a></p></div>
 <form id="cform" class="cform" novalidate>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
 <label>Name<input name="name" required></label>
 <label>Phone<input name="phone" type="tel"></label>
 <label>Email<input name="email" type="email" required></label>
 <label>Message<textarea name="msg" rows="5" required></textarea></label>
 <button class="btn btn-dark" type="submit">Send Message</button>
 <p class="note" id="cnote"></p></form></section></main>'''
-    s += footer().replace('<script src="js/main.js">', f'<script>window.CONTACT_EMAIL="{C["email"]}";</script><script src="js/main.js">')
+    s += footer().replace('<script src="js/main.js">', f'<script>window.CONTACT_EMAIL="{C["email"]}";window.CONTACT_PHONE="{C["phone1"]}";</script><script src="js/main.js">')
     open(f"{OUT}/contact-us.html", "w").write(s)
 
 def build_projects():
