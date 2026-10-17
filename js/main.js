@@ -27,21 +27,4 @@
     lb.onclick=function(e){if(e.target===lb)lb.hidden=true};
     addEventListener('keydown',function(e){if(lb.hidden)return;if(e.key==='Escape')lb.hidden=true;if(e.key==='ArrowLeft')show(li-1);if(e.key==='ArrowRight')show(li+1)});
   }
-  // contact form -> FormSubmit (free) sends the message to the business inbox; mailto is a fallback
-  var f=$('#cform');
-  if(f)f.onsubmit=function(e){
-    e.preventDefault();
-    var d=new FormData(f),note=$('#cnote'),btn=$('button[type=submit]',f);
-    if(d.get('_honey'))return;
-    if(!d.get('name')||!d.get('email')||!d.get('msg')){note.textContent='Please fill in name, email and message.';return}
-    btn.disabled=true;note.textContent='Sending…';
-    var data={name:d.get('name'),phone:d.get('phone')||'-',email:d.get('email'),message:d.get('msg'),_subject:'New website enquiry from '+d.get('name'),_template:'table',_replyto:d.get('email')};
-    fetch('https://formsubmit.co/ajax/'+window.CONTACT_EMAIL,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.json()}).then(function(j){
-        if(j.success==='true'||j.success===true){f.reset();note.textContent='Thank you! Your message has been sent. We will get back to you shortly.'}
-        else throw new Error('fail')
-      }).catch(function(){
-        note.innerHTML='Sorry, we could not send your message. Please call '+window.CONTACT_PHONE+' or <a href="mailto:'+window.CONTACT_EMAIL+'">email us</a>.'
-      }).then(function(){btn.disabled=false});
-  };
 })();
