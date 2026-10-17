@@ -6,14 +6,15 @@ OUT = os.path.dirname(os.path.abspath(__file__))
 CONFIG = dict(
     name="A S Builders",
     tagline="Masonry · Restoration · Waterproofing",
-    address="Your Street Address, City, State",
-    phone1="+00 00000 00000",
-    phone2="+00 00000 00001",
-    email="info@asbuilders.homes",
-    domain="asbuilders.homes",
+    address="111-11 101st Avenue, South Richmond Hill, NY 11419, USA",
+    phone1="+1 (347) 593-7712",
+    phone2="",
+    email="asbuilder13@gmail.com",
+    domain="asbuildersny.com",
     linkedin="#", instagram="#",
 )
 C = CONFIG
+TEL1 = '+' + ''.join(ch for ch in C['phone1'] if ch.isdigit())
 
 PROJECTS = [
     dict(slug="loft-facade-restoration", title="Loft Façade Restoration", scope="Brick Restoration · Scaffolding · Cleaning",
@@ -88,7 +89,7 @@ def footer():
 <footer><div class="wrap fgrid">
 <div><a href="index.html" class="brand">{logo()}</a>
 <p class="faddr"><strong>{C['name']}</strong><br>{C['address']}</p>
-<p><a href="tel:{C['phone1'].replace(' ','')}">{C['phone1']}</a><br><a href="tel:{C['phone2'].replace(' ','')}">{C['phone2']}</a><br><a href="mailto:{C['email']}">{C['email']}</a></p></div>
+<p><a href="tel:{TEL1}">{C['phone1']}</a><br><a href="mailto:{C['email']}">{C['email']}</a></p></div>
 <nav class="flinks"><a href="index.html#services">Services</a><a href="index.html#projects">Projects</a><a href="about-us.html">About Us</a><a href="contact-us.html">Contact Us</a></nav>
 </div><div class="wrap copy">© 2026 {C['name']}. All rights reserved.</div></footer>
 <script src="js/main.js"></script></body></html>'''
@@ -157,7 +158,7 @@ def build_contact():
 <section class="wrap cgrid"><div><h2>Get in touch</h2>
 <p>Tell us about your building and what needs fixing. We'll get back to you quickly.</p>
 <p><strong>{C['name']}</strong><br>{C['address']}</p>
-<p><a href="tel:{C['phone1'].replace(' ','')}">{C['phone1']}</a><br><a href="tel:{C['phone2'].replace(' ','')}">{C['phone2']}</a><br><a href="mailto:{C['email']}">{C['email']}</a></p></div>
+<p><a href="tel:{TEL1}">{C['phone1']}</a><br><a href="mailto:{C['email']}">{C['email']}</a></p></div>
 <form id="cform" class="cform" novalidate>
 <label>Name<input name="name" required></label>
 <label>Phone<input name="phone" type="tel"></label>
